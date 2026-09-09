@@ -189,7 +189,7 @@ function render() {
 	var at =  vec3(0.0, 0.0, 0.0);
 	var up =  vec3(0.0, 1.0, 0.0);
 
-	modelViewMatrix = translate(0, 0, -10);       //lookAt(eye,at,up);
+	modelViewMatrix = //translate(0, 0, -10);       //lookAt(eye,at,up);
     gl.uniformMatrix4fv( modelViewMatrixLoc, false, flatten(modelViewMatrix) );
 	
 	gl.drawArrays(shapes.axes.type, shapes.axes.start, shapes.axes.size);	
