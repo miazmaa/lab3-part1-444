@@ -189,9 +189,12 @@ function render() {
 	var at =  vec3(0.0, 0.0, 0.0);
 	var up =  vec3(0.0, 1.0, 0.0);
 
-	modelViewMatrix = lookAt(eye,at,up);
-    gl.uniformMatrix4fv( modelViewMatrixLoc, false, flatten(modelViewMatrix) );
-	
+	modelViewMatrix = mult(lookAt(eye, at, up), translate(1.0, 0.0, 0.0));
+	gl.uniformMatrix4fv( modelViewMatrixLoc, false, flatten(modelViewMatrix) );
+	gl.drawArrays(shapes.wireCube.type, shapes.wireCube.start, shapes.wireCube.size);
+
+	modelViewMatrix = lookAt(eye, at, up);
+	gl.uniformMatrix4fv( modelViewMatrixLoc, false, flatten(modelViewMatrix) );
 	gl.drawArrays(shapes.axes.type, shapes.axes.start, shapes.axes.size);	
     requestAnimationFrame(render);
 }
