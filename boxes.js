@@ -174,7 +174,8 @@ window.onload = function init() {
 
 
 	//Set up projection matrix
-	projectionMatrix=perspective(45.0, canvas.width / canvas.height, 0.1, 100.0);
+	//projectionMatrix=perspective(45.0, canvas.width / canvas.height, 0.1, 100.0);
+	projectionMatrix=ortho(-2.0, 2.0, -2.0, 2.0, 0.1, 100.0);
 	gl.uniformMatrix4fv( projectionMatrixLoc, false, flatten(projectionMatrix) );
 
     render();
