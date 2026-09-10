@@ -8,6 +8,7 @@ var gl;
 //Collect shape information into neat package
 var shapes = {
    wireCube: {points:[], colors:[], start:0, size:0, type: 0},
+ wireCube2: {points:[], colors:[], start:0, size:0, type: 0},
    solidCube: {points:[], colors:[], start:0, size:0, type: 0},
    axes: {points:[], colors:[], start:0, size:0, type: 0},
 };
@@ -92,6 +93,8 @@ for (var i =0; i < wireCubeLookups.length; i++)
 {
    shapes.wireCube.points.push(cubeVerts[wireCubeLookups[i]]);
    shapes.wireCube.colors.push(white);
+   shapes.wireCube2.points.push(cubeVerts[wireCubeLookups[i]]);
+   shapes.wireCube2.colors.push(blue); 
 }
 
 //Expand Solid Cube data: each face will be a different color so you can see
@@ -143,6 +146,7 @@ window.onload = function init() {
 	// Mostly done globally in this program...
 	loadShape(shapes.wireCube, gl.LINE_STRIP);
 	loadShape(shapes.solidCube, gl.TRIANGLES);
+	loadShape(shapes.wireCube2, gl.LINE_STRIP);
 	loadShape(shapes.axes, gl.LINES);
 
 
@@ -192,9 +196,9 @@ function render() {
 	modelViewMatrix = mult(lookAt(eye, at, up), translate(1.0, 0.0, 0.0)); //remember translate comes 
 	gl.uniformMatrix4fv( modelViewMatrixLoc, false, flatten(modelViewMatrix) );
 	gl.drawArrays(shapes.wireCube.type, shapes.wireCube.start, shapes.wireCube.size);
-	modelViewMatrix = mult(lookAt(eye, at, up), translate(-1.0, 0.0, 0.0));
+	modelViewMatrix = mult(lookAt(eye, at, up), mult(translate(1.0, 1.0, 0.0), rotate(45.0, 0.0, 1.0, 0.0)));
 	gl.uniformMatrix4fv( modelViewMatrixLoc, false, flatten(modelViewMatrix) );
-	gl.drawArrays(shapes.wireCube.type, shapes.wireCube.start, shapes.wireCube.size);
+	gl.drawArrays(shapes.wireCube2.type, shapes.wireCube2.start, shapes.wireCube2.size);
 	modelViewMatrix = lookAt(eye, at, up)
 	gl.uniformMatrix4fv( modelViewMatrixLoc, false, flatten(modelViewMatrix) );
 	gl.drawArrays(shapes.axes.type, shapes.axes.start, shapes.axes.size);	
