@@ -193,14 +193,14 @@ function render() {
 	var eye = vec3(0.0, 0.0, 10.0);
 	var at =  vec3(0.0, 0.0, 0.0);
 	var up =  vec3(0.0, 1.0, 0.0);
-
-	modelViewMatrix = mult(lookAt(eye, at, up), translate(1.0, 0.0, 0.0)); //remember translate comes 
+	var rotation = rotate(90.0, 1.0, 0.0, 0.0);
+	modelViewMatrix = mult(lookAt(eye, at, up), mult(rotation, translate(1.0, 0.0, 0.0))); //remember translate comes 
 	gl.uniformMatrix4fv( modelViewMatrixLoc, false, flatten(modelViewMatrix) );
 	gl.drawArrays(shapes.wireCube.type, shapes.wireCube.start, shapes.wireCube.size);
-	modelViewMatrix = mult(lookAt(eye, at, up), mult(translate(1.0, 1.0, 0.0), rotate(45.0, 0.0, 1.0, 0.0)));
+	modelViewMatrix = mult(lookAt(eye, at, up), mult(rotation, mult(translate(1.0, 1.0, 0.0), rotate(45.0, 0.0, 1.0, 0.0))));
 	gl.uniformMatrix4fv( modelViewMatrixLoc, false, flatten(modelViewMatrix) );
 	gl.drawArrays(shapes.wireCube2.type, shapes.wireCube2.start, shapes.wireCube2.size);
-	modelViewMatrix = lookAt(eye, at, up)
+	modelViewMatrix = mult(lookAt(eye, at, up), rotation);
 	gl.uniformMatrix4fv( modelViewMatrixLoc, false, flatten(modelViewMatrix) );
 	gl.drawArrays(shapes.axes.type, shapes.axes.start, shapes.axes.size);	
     requestAnimationFrame(render);
