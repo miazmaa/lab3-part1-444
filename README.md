@@ -4,3 +4,9 @@
 4.	Similarly the box shrank, but this time it lost width. Both axes look smaller for this reason.
 5.	For C the boxes shrank the same way, but the axes shrank without looking squashed or stretched out. It fits the canvas changes better.
 6.	Rotate the cubes instead of the axes 
+
+Anne Canino
+9/10/2026
+I learned about how the X, Y, and Z axes interact with each other and how to manipulate all three to display objects in unique ways. 
+To view objects from certain angles, it's important to know how the axes work and where to rotate the "camera" view to properly view the objects.
+For example, the Z-axis was there for the entire project, yet the camera only began seeing it in Step 10.
