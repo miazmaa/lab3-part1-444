@@ -193,7 +193,7 @@ function render() {
 	var eye = vec3(0.0, 0.0, 10.0);
 	var at =  vec3(0.0, 0.0, 0.0);
 	var up =  vec3(0.0, 1.0, 0.0);
-	var rotation = rotate(90.0, 1.0, 0.0, 0.0);
+	var rotation = rotate(30.0, 1.0, 0.0, 0.0);
 	modelViewMatrix = mult(lookAt(eye, at, up), mult(rotation, translate(1.0, 0.0, 0.0))); //remember translate comes 
 	gl.uniformMatrix4fv( modelViewMatrixLoc, false, flatten(modelViewMatrix) );
 	gl.drawArrays(shapes.wireCube.type, shapes.wireCube.start, shapes.wireCube.size);
